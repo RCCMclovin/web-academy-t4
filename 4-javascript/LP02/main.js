@@ -31,13 +31,28 @@ paths.forEach((path) => {
         displayedImage.alt = event.target.alt;
         if (event.target.src.substring(event.target.src.length - 15) === paths[0]) {
             displayedImage.style.marginTop = "60px";
+            displayedImage.style.width = "640px";
+            displayedImage.style.marginLeft = "0px";
+            overlay.style.marginLeft = "0px";
             overlay.style.marginTop = "60px";
             overlay.style.height = "450px";
-        }
-        else {
+            overlay.style.width = "640px";
+        } else if (event.target.src.substring(event.target.src.length - 15) === paths[4]) {
             displayedImage.style.marginTop = "0px";
+            displayedImage.style.width = "500px";
+            displayedImage.style.marginLeft = "70px";
+            overlay.style.marginLeft = "70px";
             overlay.style.marginTop = "0px";
             overlay.style.height = "600px";
+            overlay.style.width = "500px";
+        }else {
+            displayedImage.style.marginTop = "0px";
+            displayedImage.style.width = "640px";
+            displayedImage.style.marginLeft = "0px";
+            overlay.style.marginLeft = "0px";
+            overlay.style.marginTop = "0px";
+            overlay.style.height = "600px";
+            overlay.style.width = "640px";
         }
     });
 });
