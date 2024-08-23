@@ -1,0 +1,11 @@
+.grafico{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    position: absolute;
+    top: 250px;
+}
+.barra{
+    background-color: red;
+    margin-right: 4px;
+}
