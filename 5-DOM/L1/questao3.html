@@ -1,0 +1,47 @@
+<body>
+  <h1>Várias listas</h1>
+
+  <p id="lista-titulo" name="lista">Lista de itens:</p>
+
+  <ul class="lista-itens-1">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-2">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-3">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+
+  <ul class="lista-itens-4">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+</body>
+
+<script type="text/javascript">
+  console.log("Imprimindo itens da lista-itens-2:");
+  var lista2 = document.querySelector(".lista-itens-2").getElementsByTagName("li"); 
+  for(let i = 0; i < lista2.length; i++){
+    console.log(lista2[i]);
+  }
+  console.log("Imprimindo itens da lista-itens-2 com a classe hot:");
+  lista2 = document.querySelector(".lista-itens-2").getElementsByClassName("hot");
+  for(let i = 0; i < lista2.length; i++){
+    console.log(lista2[i]);
+  }
+
+</script>
