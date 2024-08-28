@@ -1,0 +1,55 @@
+<body>
+  <h1>To-do</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Lista de atividades:</p>
+  </div>
+
+  <div>
+    <input placeholder="Digite aqui o item" />
+    <button>Adicionar</button>
+  </div>
+
+  <ul id="lista-itens">
+    <li>item a</li>
+  </ul>
+
+  <div>
+    <button>Remover último item</button>
+  </div>
+</body>
+<script type="text/javascript">
+  var buttons = document.getElementsByTagName("button");
+  var lista = document.getElementById("lista-itens");
+  var entrada = document.getElementsByTagName("input")[0];
+  var add, rm;
+  //Para garantir que pegujei os botões certos
+  if(buttons[0].innerHTML === "Adicionar"){
+    add = buttons[0];
+    rm = buttons[1];
+  }else{
+    add = buttons[1];
+    rm = buttons[0];
+  }
+  
+  add.addEventListener("click", () => {
+    if(entrada.value) {
+      let newText, newElement;
+      newText = document.createTextNode(entrada.value);
+      newElement = document.createElement("li");
+      newElement.appendChild(newText);
+      lista.appendChild(newElement);
+      entrada.value = "";
+      if(rm.disabled) rm.disabled = false;
+    }
+  });
+
+  rm.addEventListener("click", () =>{
+    if(lista.children.length > 0){
+      lista.removeChild(lista.lastElementChild);
+      if(lista.children.length === 0) rm.disabled = true;
+    }
+  });
+
+
+</script>

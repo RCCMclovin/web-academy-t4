@@ -1,0 +1,25 @@
+<body>
+  <h1>Várias listas</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Lista de itens:</p>
+  </div>
+
+  <ul id="lista-itens-1">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+</body>
+<script type="text/javascript">
+  console.log("Item i)");
+  var lista1 = document.getElementById("lista-itens-1");
+  var text = document.createTextNode("Novo li");
+  var element = document.createElement("li");
+  element.setAttribute("id", "lista-itens-1");
+  element.appendChild(text);
+  lista1.appendChild(element);
+
+  console.log(lista1);
+</script>

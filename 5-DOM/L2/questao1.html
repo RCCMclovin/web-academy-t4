@@ -1,0 +1,40 @@
+<body>
+  <h1>Várias listas</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Lista de itens:</p>
+  </div>
+
+  <ul id="lista-itens-1">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+</body>
+<script type="text/javascript">
+var lista1 = document.getElementById("lista-itens-1");
+
+console.log("Item i)");
+console.log(lista1.firstElementChild);
+console.log(lista1.lastElementChild);
+
+console.log("Item ii)");
+console.log(lista1.parentElement);
+
+console.log("Item iii)");
+for(let i = 0; i < lista1.children.length; i++) console.log(lista1.children[i]);
+
+console.log("Item iv)");
+let sib = document.getElementById("two").previousElementSibling;
+while(sib != null){
+  console.log(sib);
+  sib = sib.previousElementSibling;
+}
+sib = document.getElementById("two").nextElementSibling;
+while(sib != null){
+  console.log(sib);
+  sib = sib.nextElementSibling;
+}
+
+</script>
