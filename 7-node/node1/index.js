@@ -1,7 +1,12 @@
 const fs = require("fs");
 const http = require("http");
+const dotenv = require("dotenv");
+
+dotenv.config();
+const PORT = process.env.PORT ?? 3333
 
 const dir = process.argv[2];
+console.log(dir);
 
 const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
@@ -15,10 +20,9 @@ const server = http.createServer((req, res) => {
             })
             res.end();
         }
-    
-    })
-
-    
+    })    
 })
 
-server.listen(3333);
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+});
