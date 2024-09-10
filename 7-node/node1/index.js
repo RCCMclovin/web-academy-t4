@@ -2,7 +2,8 @@ const fs = require("fs");
 const http = require("http");
 const dotenv = require("dotenv");
 
-dotenv.config();
+
+dotenv.config({ path: `env/.env.${process.env.NODE_ENV}` });
 const PORT = process.env.PORT ?? 3333
 
 const dir = process.argv[2];
