@@ -12,8 +12,8 @@ function hasFile(name, files) {
     return flag;
 }
 
-dotenv.config({ path: `env/.env.${process.env.NODE_ENV}` });
-const PORT = process.env.PORT ?? 3333
+dotenv.config({ path: `./env/.env.${process.env.NODE_ENV}` });
+const PORT = process.env.PORT ?? 3333;
 
 var dir = "./public/";
 var files = [];
