@@ -50,11 +50,7 @@ form?.addEventListener("submit", (event) => {
         let errorText = document.createTextNode("Digite novamente o seu Email.");
         formConfError?.appendChild(errorText);
         formEmailConf?.classList.add("is-invalid");        
-    }
-    if (formEmail === formEmailConf) {
-        formEmailConf?.classList.remove("is-invalid");
-    }
-    if (form.checkValidity()) {
+    } else if (form.checkValidity()) {
         form.classList.add('was-validated');
         let newUser = new User(formName?.value, formEmail?.value, formPass?.value);
         localStorage.setItem("curUser", newUser.id);

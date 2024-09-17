@@ -39,10 +39,7 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
         formConfError === null || formConfError === void 0 ? void 0 : formConfError.appendChild(errorText);
         formEmailConf === null || formEmailConf === void 0 ? void 0 : formEmailConf.classList.add("is-invalid");
     }
-    if (formEmail === formEmailConf) {
-        formEmailConf === null || formEmailConf === void 0 ? void 0 : formEmailConf.classList.remove("is-invalid");
-    }
-    if (form.checkValidity()) {
+    else if (form.checkValidity()) {
         form.classList.add('was-validated');
         var newUser = new User(formName === null || formName === void 0 ? void 0 : formName.value, formEmail === null || formEmail === void 0 ? void 0 : formEmail.value, formPass === null || formPass === void 0 ? void 0 : formPass.value);
         localStorage.setItem("curUser", newUser.id);
