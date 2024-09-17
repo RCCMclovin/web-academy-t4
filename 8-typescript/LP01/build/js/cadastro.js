@@ -31,7 +31,7 @@ var User = /** @class */ (function () {
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (event) {
     event.preventDefault();
     event.stopPropagation();
-    if (formEmail !== formEmailConf) {
+    if (formEmail.value !== formEmailConf.value) {
         while (formConfError === null || formConfError === void 0 ? void 0 : formConfError.firstChild) {
             formConfError === null || formConfError === void 0 ? void 0 : formConfError.removeChild(formConfError === null || formConfError === void 0 ? void 0 : formConfError.firstChild);
         }

@@ -43,7 +43,7 @@ form?.addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (formEmail !== formEmailConf) {
+    if (formEmail.value !== formEmailConf.value) {
         while (formConfError?.firstChild) {
             formConfError?.removeChild(formConfError?.firstChild);
         }
