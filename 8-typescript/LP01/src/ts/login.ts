@@ -8,8 +8,10 @@ interface User{
     email: string;
     id: string;
     pass: string;
+}
 
-    auth(pass: string): boolean;
+function auth(pass: string, user: User): boolean{
+    return pass === user.pass;
 }
 
 form?.addEventListener("submit", (event) => {
@@ -26,7 +28,7 @@ form?.addEventListener("submit", (event) => {
             formEmailError?.appendChild(errorText);
             formEmail?.classList.add("is-invalid");   
         } else {
-            let validated: boolean = JSON.parse(user).auth(formPass?.value);
+            let validated: boolean = auth(formPass?.value, JSON.parse(user));
             if (!validated) {
                 while (formEmailError?.firstChild) {
                     formEmailError?.removeChild(formEmailError?.firstChild);
@@ -37,7 +39,7 @@ form?.addEventListener("submit", (event) => {
             } else {
                 formEmail?.classList.remove("is-invalid");
                 form.classList.add('was-validated');
-                localStorage.setItem("curUser", JSON.parse(user).getId());
+                localStorage.setItem("curUser", JSON.parse(user).id);
                 window.location.replace("list.html");
             }
         }

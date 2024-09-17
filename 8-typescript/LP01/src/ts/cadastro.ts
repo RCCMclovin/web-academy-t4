@@ -36,9 +36,6 @@ class User{
         localStorage.setItem(this.id, JSON.stringify([]));
         //Salvando usuário 
         localStorage.setItem(this.email, JSON.stringify(this))
-    } 
-    public auth(pass: string): boolean{
-        return pass === this.pass;
     }
 }
 

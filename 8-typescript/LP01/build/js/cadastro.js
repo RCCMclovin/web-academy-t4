@@ -26,9 +26,6 @@ var User = /** @class */ (function () {
         //Salvando usuário 
         localStorage.setItem(this.email, JSON.stringify(this));
     }
-    User.prototype.auth = function (pass) {
-        return pass === this.pass;
-    };
     return User;
 }());
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (event) {

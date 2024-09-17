@@ -2,6 +2,9 @@ var form = document.getElementById("form");
 var formEmail = document.getElementById("emailUsuario");
 var formEmailError = document.getElementById("emailError");
 var formPass = document.getElementById("senhaUsuario");
+function auth(pass, user) {
+    return pass === user.pass;
+}
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -16,7 +19,7 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
             formEmail === null || formEmail === void 0 ? void 0 : formEmail.classList.add("is-invalid");
         }
         else {
-            var validated = JSON.parse(user).auth(formPass === null || formPass === void 0 ? void 0 : formPass.value);
+            var validated = auth(formPass === null || formPass === void 0 ? void 0 : formPass.value, JSON.parse(user));
             if (!validated) {
                 while (formEmailError === null || formEmailError === void 0 ? void 0 : formEmailError.firstChild) {
                     formEmailError === null || formEmailError === void 0 ? void 0 : formEmailError.removeChild(formEmailError === null || formEmailError === void 0 ? void 0 : formEmailError.firstChild);
@@ -28,7 +31,7 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
             else {
                 formEmail === null || formEmail === void 0 ? void 0 : formEmail.classList.remove("is-invalid");
                 form.classList.add('was-validated');
-                localStorage.setItem("curUser", JSON.parse(user).getId());
+                localStorage.setItem("curUser", JSON.parse(user).id);
                 window.location.replace("list.html");
             }
         }
