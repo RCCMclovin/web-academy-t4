@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <main class="container min-vw-100"></main>
+    <div class="d-flex justify-content-center align-items-center">
+        <table class="table caption-top">
+            <caption></caption>
+            <thead>
+                <tr id="theadCarrinho">
+                    <th scope="col">Quantidade de Items</th>
+                    <th scope="col">Valor Total</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyCarrinho">
+                <tr class="table-info">
+                    <th id="numProd" scope="row"></th>
+                    <td id="valProd"></td>
+                    <td><button id="butCleanCart" class="btn btn-secondary">Esvaziar</button>
+                        <button id="butBuy" class="btn btn-secondary">Comprar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-block mt-2">
+        <div class="d-flex justify-content-end">
+            <button id="createBut" type="button" class="btn btn-warning mr-5" data-bs-toggle="modal"
+                data-bs-target="#createProdutoModal">
+                Criar Produto
+            </button>
+        </div>
+    </div>
+    <table class="table caption-top">
+        <caption></caption>
+        <thead>
+            <tr id="thead">
+                <th scope="col">Tipo</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Fabricante</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Quantidade</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="createProdutoModal" tabindex="-1" aria-labelledby="createProdutoModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="createProdutoModal">Novo Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="formCreateProduto" class="g-3 needs-validation" validate>
+                        <div class="d-block w-100">
+                            <p>Selecione o tipo de produto:<br></p>
+                        </div>
+                        <div id="prodSelec" class="d-flex w-100 justify-content-evenly align-items-center">
+                            <div>
+                                <input type="radio" class="form-check-input" id="TV" name="productType" value="TV"
+                                    required>
+                                <label class="form-check-input" for="TV">TV</label>
+                            </div>
+                            <div>
+                                <input type="radio" class="form-check-input" id="bicicleta" name="productType"
+                                    value="Bicicleta" required>
+                                <label class="form-check-input" for="bicicleta">Bicicleta</label>
+                            </div>
+                            <div>
+                                <input type="radio" class="form-check-input" id="celular" name="productType"
+                                    value="Celular" required>
+                                <label class="form-check-input" for="celular">Celular</label>
+                            </div>
+
+                        </div>
+
+                        <div class="d-block">
+                            <label for="Modelo" class="form-label">Modelo</label>
+                            <input type="text" class="form-control" id="Modelo" value="" required>
+                            <div class="invalid-feedback">
+                                Preencha este campo.
+                            </div>
+                        </div>
+                        <div class="d-block">
+                            <label for="Fabricante" class="form-label">Fabricante</label>
+                            <input type="text" class="form-control" id="Fabricante" value="" required>
+                            <div class="invalid-feedback">
+                                Preencha este campo.
+                            </div>
+                        </div>
+
+                        <div class="d-block">
+                            <label for="Valor" class="form-label">Valor</label>
+                            <input type="text" class="form-control" id="Valor" value="" required>
+                            <div class="invalid-feedback">
+                                Preencha este campo.
+                            </div>
+                        </div>
+
+                        <div id="fields" class="d-block">
+                        </div>
+
+                        <div class="d-block mt-3">
+                            <button type="submit" class="btn btn-success w-100">Cadastrar Produto</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="../js/index.js" type="text/javascript"></script>
+
+</html>
