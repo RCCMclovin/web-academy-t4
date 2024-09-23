@@ -4,22 +4,32 @@
   "description": "",
   "main": "./build/js/index.js",
   "scripts": {
-    "start": "NODE_ENV=development npx nodemon ./src/ts/index.ts",
+    "start": "npx nodemon ./src/ts/index.ts",
     "build": "npx tsc",
-    "start:prod": "NODE_ENV=production node ./build/js/index.js"
+    "start:prod": "node ./build/js/index.js",
+    "lint": "npx eslint src/",
+    "lint:fix": "npx eslint --fix src/",
+    "format": "npx prettier --write src/"
+
   },
   "keywords": [],
   "author": "Rafael Castilho Carvaho",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "envalid": "^8.0.0",
     "express": "^4.21.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.11.0",
     "@types/express": "^4.17.21",
     "@types/node": "^22.5.5",
+    "eslint": "^9.11.0",
+    "globals": "^15.9.0",
     "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.6.0"
   }
 }
