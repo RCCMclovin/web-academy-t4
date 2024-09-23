@@ -1,4 +1,0 @@
-2024-09-23T16:05:30.194Z, /, GET, 1.1, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0
-2024-09-23T16:05:34.052Z, /, GET, 1.1, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0
-2024-09-23T16:06:19.554Z, /, GET
-2024-09-23T16:06:22.485Z, /, GET
