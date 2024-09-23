@@ -5,6 +5,8 @@ const validateEnv = () => {
     (0, envalid_1.cleanEnv)(process.env, {
         NODE_ENV: (0, envalid_1.str)(),
         PORT: (0, envalid_1.port)(),
+        LOGS_PATH: (0, envalid_1.str)(),
+        LOGS_TYPE: (0, envalid_1.str)(),
     });
 };
 exports.default = validateEnv;
