@@ -91,4 +91,14 @@ router.get("/hb4", (req: Request, res: Response) => {
     });
 });
 
+router.get("/lorem", (req: Request, res: Response) => {
+    const { num } = req.query;
+    let paragraphs = "";
+    if(num) paragraphs = lorem.generateParagraphs(Number(num));
+    res.render("lorem", {
+        paragraphs,
+        layout: false,
+    });
+})
+
 export default router;

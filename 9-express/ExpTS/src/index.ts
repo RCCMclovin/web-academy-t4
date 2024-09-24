@@ -22,6 +22,7 @@ app.set("views", `${__dirname}/views`);
 app.use(logger(LOGS_PATH, LOGS_TYPE));
 
 app.use("/img", express.static(`${process.cwd()}/public/img`));
+app.use("/css", express.static(`${process.cwd()}/public/css`));
    
 app.use(router);
 
