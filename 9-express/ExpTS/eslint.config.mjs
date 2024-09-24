@@ -11,6 +11,7 @@ export default [
   {
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/semi": "on"
+      "@typescript-eslint/no-require-imports": 1,
+      "@/semi": "error"
   }},
 ];
