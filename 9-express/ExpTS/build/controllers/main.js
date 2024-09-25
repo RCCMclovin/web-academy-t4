@@ -23,7 +23,9 @@ const about = (req, res) => {
     });
 };
 const loremParam = (req, res, next) => {
-    const { num } = req.params;
+    let { num } = req.query;
+    if (!num)
+        num = req.params.num;
     const paragraphs = lorem.generateParagraphs(Number(num));
     res.render('main/lorem', {
         paragraphs,
