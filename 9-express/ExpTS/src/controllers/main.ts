@@ -26,7 +26,8 @@ const about = (req: Request, res: Response) => {
 };
 
 const loremParam = (req: Request, res: Response, next: NextFunction) => {
-  const { num } = req.params;
+  let { num } = req.query;
+  if (!num) num = req.params.num;
   const paragraphs = lorem.generateParagraphs(Number(num));
   res.render('main/lorem', {
     paragraphs,
