@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
 const lorem_ipsum_1 = require("lorem-ipsum");
 const lorem = new lorem_ipsum_1.LoremIpsum({
     sentencesPerParagraph: {
@@ -13,60 +12,51 @@ const lorem = new lorem_ipsum_1.LoremIpsum({
     },
 });
 lorem.format = 'html';
-const router = (0, express_1.Router)();
-router.get('/', (req, res) => {
+const hello = (req, res) => {
     res.send('Hello World!');
-});
-router.get('/about', (req, res) => {
+};
+const about = (req, res) => {
     const msg = 'Mensagem sobre a página';
-    res.render('about', {
-        layout: false,
+    res.render('main/about', {
+        layout: 'main',
         msg,
     });
-});
-router.get('/lorem/:num', (req, res) => {
+};
+const loremParam = (req, res, next) => {
     const { num } = req.params;
-    res.send(lorem.generateParagraphs(Number(num)));
-});
-router.get('/hb1', (req, res) => {
-    res.render('hb1', {
-        mensagem: 'Olá, você está aprendendo Express + HBS!',
-        layout: false,
+    const paragraphs = lorem.generateParagraphs(Number(num));
+    res.render('main/lorem', {
+        paragraphs,
+        layout: 'lorem',
     });
-});
-router.get('/hb2', (req, res) => {
-    res.render('hb2', {
+};
+const hb1 = (req, res) => {
+    res.render('main/hb1', {
+        mensagem: 'Olá, você está aprendendo Express + HBS!',
+        layout: 'main',
+    });
+};
+const hb2 = (req, res) => {
+    res.render('main/hb2', {
         poweredbyNodejs: true,
         name: 'Express',
         type: 'Framework',
-        layout: false,
+        layout: 'main',
     });
-});
-router.get('/hb3', (req, res) => {
+};
+const hb3 = (req, res) => {
     const profs = [
         { nome: 'David Fernandes', sala: 1234 },
         { nome: 'Horácio Fernandes', sala: 1235 },
         { nome: 'Edleno Moura', sala: 1236 },
         { nome: 'Elaine harada', sala: 1237 },
     ];
-    res.render('hb3', {
+    res.render('main/hb3', {
         profs,
-        layout: false,
+        layout: 'main',
     });
-});
-router.get('/profs', (req, res) => {
-    const profs = [
-        { nome: 'David Fernandes', sala: 1234 },
-        { nome: 'Horácio Fernandes', sala: 1235 },
-        { nome: 'Edleno Moura', sala: 1236 },
-        { nome: 'Elaine harada', sala: 1237 },
-    ];
-    res.render('profs', {
-        profs,
-        layout: false,
-    });
-});
-router.get('/hb4', (req, res) => {
+};
+const hb4 = (req, res) => {
     const techs = [
         { name: 'Express', type: 'Framework', poweredByNodejs: true },
         { name: 'Laravel', type: 'Framework', poweredByNodejs: false },
@@ -76,19 +66,41 @@ router.get('/hb4', (req, res) => {
         { name: 'Docker', type: 'Virtualization', poweredByNodejs: false },
         { name: 'Sequelize', type: 'ORM tool', poweredByNodejs: true },
     ];
-    res.render('hb4', {
+    res.render('main/hb4', {
         techs,
-        layout: false,
+        layout: 'main',
     });
-});
-router.get('/lorem', (req, res) => {
+};
+const profs = (req, res) => {
+    const profs = [
+        { nome: 'David Fernandes', sala: 1234 },
+        { nome: 'Horácio Fernandes', sala: 1235 },
+        { nome: 'Edleno Moura', sala: 1236 },
+        { nome: 'Elaine harada', sala: 1237 },
+    ];
+    res.render('main/profs', {
+        profs,
+        layout: 'main',
+    });
+};
+const loremQuery = (req, res) => {
     const { num } = req.query;
     let paragraphs = '';
     if (num)
         paragraphs = lorem.generateParagraphs(Number(num));
-    res.render('lorem', {
+    res.render('main/lorem', {
         paragraphs,
-        layout: false,
+        layout: 'lorem',
     });
-});
-exports.default = router;
+};
+exports.default = {
+    hello,
+    about,
+    loremParam,
+    loremQuery,
+    hb1,
+    hb2,
+    hb3,
+    hb4,
+    profs,
+};

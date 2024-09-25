@@ -2,11 +2,11 @@
   "name": "expts",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/js/index.js",
+  "main": "./build/index.js",
   "scripts": {
     "start": "npx nodemon ./src/index.ts",
-    "build": "npx tsc",
-    "start:prod": "node ./build/js/index.js",
+    "build": "npx tsc && rm build/views/*/*.handlebars && cp --parents -r src/views/*/*.handlebars build/views/ && mv build/views/src/views/* build/views/ && rm -r build/views/src/",
+    "start:prod": "node ./build/index.js",
     "lint": "npx eslint src/",
     "lint:fix": "npx eslint --fix src/",
     "format": "npx prettier --write src/"
@@ -19,7 +19,9 @@
     "envalid": "^8.0.0",
     "express": "^4.21.0",
     "express-handlebars": "^8.0.1",
-    "lorem-ipsum": "^2.0.8"
+    "lorem-ipsum": "^2.0.8",
+    "node-sass-middleware": "^1.1.0",
+    "sass": "^1.79.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.0",
@@ -27,6 +29,7 @@
     "@types/express-handlebars": "^5.3.1",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.5.5",
+    "@types/node-sass-middleware": "^0.0.35",
     "eslint": "^9.11.0",
     "globals": "^15.9.0",
     "nodemon": "^3.1.7",

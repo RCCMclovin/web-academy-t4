@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_handlebars_1 = require("express-handlebars");
+const node_sass_middleware_1 = __importDefault(require("node-sass-middleware"));
 const logger_1 = __importDefault(require("./middlewares/logger"));
 const router_1 = __importDefault(require("./router/router"));
 const validateEnv_1 = __importDefault(require("./utils/validateEnv"));
@@ -18,6 +19,12 @@ const LOGS_TYPE = (process.env.LOGS_TYPE || 'simples');
 app.engine('handlebars', (0, express_handlebars_1.engine)({ helpers: require(`${__dirname}/views/helper/helper.ts`) }));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
+app.use((0, node_sass_middleware_1.default)({
+    src: `${process.cwd()}/public/scss`,
+    dest: `${process.cwd()}/public/css`,
+    outputStyle: 'compressed',
+    prefix: '/css',
+}));
 app.use((0, logger_1.default)(LOGS_PATH, LOGS_TYPE));
 app.use('/img', express_1.default.static(`${process.cwd()}/public/img`));
 app.use('/css', express_1.default.static(`${process.cwd()}/public/css`));

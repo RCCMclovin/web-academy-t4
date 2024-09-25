@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import { engine } from 'express-handlebars';
+import sass from 'node-sass-middleware';
 
 import logger, { LogType } from './middlewares/logger';
 import router from './router/router';
@@ -20,6 +21,15 @@ app.engine(
 );
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
+
+app.use(
+  sass({
+    src: `${process.cwd()}/public/scss`,
+    dest: `${process.cwd()}/public/css`,
+    outputStyle: 'compressed',
+    prefix: '/css',
+  }),
+);
 
 app.use(logger(LOGS_PATH, LOGS_TYPE));
 
