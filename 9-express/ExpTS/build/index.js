@@ -28,6 +28,7 @@ app.use((0, node_sass_middleware_1.default)({
 app.use((0, logger_1.default)(LOGS_PATH, LOGS_TYPE));
 app.use('/img', express_1.default.static(`${process.cwd()}/public/img`));
 app.use('/css', express_1.default.static(`${process.cwd()}/public/css`));
+app.use('/js', express_1.default.static(`${process.cwd()}/public/js`));
 app.use(router_1.default);
 app.use((req, res) => {
     res.send('404!');
