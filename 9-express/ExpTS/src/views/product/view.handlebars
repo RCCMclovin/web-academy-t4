@@ -1,0 +1,15 @@
+<div class='card' style='width: 18rem;'>
+  <div class='card-body'>
+    <h5 class='card-title'>{{produto.nome}}</h5>
+    <h6 class='card-subtitle mb-2 text-body-secondary'>Preço:
+      {{produto.preco}}<br />Estoque:
+      {{produto.estoque}}</h6>
+
+    <a href='/produtos/update/{{produto.id}}'><i
+        class='bi bi-pencil-square card-link'
+      ></i></a>
+    <a href='/produtos/delete/{{produto.id}}'><i
+        class='bi bi-trash3-fill card-link'
+      ></i></a>
+  </div>
+</div>

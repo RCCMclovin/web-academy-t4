@@ -32,6 +32,7 @@ app.use(
 );
 
 app.use(logger(LOGS_PATH, LOGS_TYPE));
+app.use(express.urlencoded({ extended: false }));
 
 app.use('/img', express.static(`${process.cwd()}/public/img`));
 app.use('/css', express.static(`${process.cwd()}/public/css`));

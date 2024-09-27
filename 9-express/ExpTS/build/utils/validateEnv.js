@@ -7,6 +7,7 @@ const validateEnv = () => {
         PORT: (0, envalid_1.port)(),
         LOGS_PATH: (0, envalid_1.str)(),
         LOGS_TYPE: (0, envalid_1.str)(),
+        DB_SERVER: (0, envalid_1.url)(),
     });
 };
 exports.default = validateEnv;
