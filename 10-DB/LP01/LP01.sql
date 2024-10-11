@@ -189,6 +189,7 @@ CREATE TABLE `Produto` (
   `Modelo` varchar(20) DEFAULT NULL,
   `Fabricante` varchar(20) DEFAULT NULL,
   `Preco` float DEFAULT NULL,
+  `Quantidade` int DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `Cat_Id` (`Cat_Id`),
   KEY `SCat_Id` (`SCat_Id`),
@@ -241,4 +242,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-10 15:36:40
+-- Dump completed on 2024-10-10 21:13:45
