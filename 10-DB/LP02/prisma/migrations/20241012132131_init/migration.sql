@@ -12,7 +12,7 @@ CREATE TABLE `Cliente` (
 -- CreateTable
 CREATE TABLE `Enderecos_Cliente` (
     `Id` INTEGER NOT NULL AUTO_INCREMENT,
-    `Cliente_CPF` VARCHAR(191) NOT NULL,
+    `Cliente_CPF` VARCHAR(11) NOT NULL,
     `Endereco` VARCHAR(100) NOT NULL,
 
     PRIMARY KEY (`Id`)
@@ -58,7 +58,7 @@ CREATE TABLE `N_de_Serie` (
 -- CreateTable
 CREATE TABLE `Pedido` (
     `Id` INTEGER NOT NULL AUTO_INCREMENT,
-    `Cliente_CPF` VARCHAR(191) NOT NULL,
+    `Cliente_CPF` VARCHAR(11) NOT NULL,
     `End_Id` INTEGER NOT NULL,
     `DH` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `Desconto` INTEGER NOT NULL DEFAULT 0,
