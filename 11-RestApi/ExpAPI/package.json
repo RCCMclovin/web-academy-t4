@@ -1,0 +1,37 @@
+{
+  "name": "expapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon ./src/index.ts --watch ./src",
+    "start:prod": "node ./build/index.js",
+    "lint": "npx eslint src/",
+    "lint:fix": "npx eslint --fix src/",
+    "prettier": "npx prettier src --check",
+    "prettier:fix": "npm run prettier -- --write",
+    "format": "npm run prettier:fix src/ && npm run lint:fix src/",
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "author": "Rafael Castilho Carvalho",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "envalid": "^8.0.0",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.5",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.11.0",
+    "nodemon": "^3.1.7",
+    "prettier": "3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.9.0"
+  }
+}
