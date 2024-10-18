@@ -3,8 +3,6 @@ import productService from './product.service'
 import { CreateProductDto } from './product.types';
 import { StatusCodes, ReasonPhrases } from "http-status-codes"
 
-import { productSchema } from './product.schema';
-
 const index = async (req: Request, res: Response) => {
   try {
     const products = await productService.list();
