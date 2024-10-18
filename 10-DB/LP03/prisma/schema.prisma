@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  CPF   String     @id @db.Char(11)
+  email String     @db.VarChar(50)
+  nome  String     @db.VarChar(50)
+  telefone  String @db.VarChar(15)
+  DoB DateTime     
+
+  Enderecos_Cliente Enderecos_Cliente[]
+
+  Pedido Pedido[]
+}
+
+model Enderecos_Cliente{
+  Id            Int         @id @default(autoincrement())
+  CPF           Cliente     @relation(fields: [Cliente_CPF], references: [CPF])
+  Cliente_CPF   String      @db.Char(11)
+  Endereco      String      @db.VarChar(100)
+
+  Pedido Pedido[]
+}
+
+model Categoria{
+  Id            Int         @id @default(autoincrement())
+  nome          String      @db.VarChar(50)
+
+  SubCategoria SubCategoria[]
+
+  Produto Produto[]
+}
+
+model SubCategoria{
+  Id            Int         @id @default(autoincrement())
+  nome          String      @db.VarChar(50)
+  Cat           Categoria   @relation(fields: [Cat_Id], references: [Id])
+  Cat_Id   Int 
+
+  Produto Produto[]
+}
+
+model Produto{
+  Id            Int          @id @default(autoincrement())
+  modelo        String       @db.VarChar(20)
+  preco         Float        @db.Float
+  fabricante    String       @db.VarChar(20)
+  Cat           Categoria    @relation(fields: [Cat_Id], references: [Id])
+  Cat_Id        Int
+  SCat          SubCategoria @relation(fields: [SCat_Id], references: [Id])
+  SCat_Id       Int
+
+  N_de_Serie N_de_Serie[]
+
+  Pedido_Produtos Pedido_Produtos[]
+}
+
+model N_de_Serie{
+  Codigo        String       @id@db.VarChar(20)
+  Prod          Produto      @relation(fields: [Prod_Id], references: [Id])
+  Prod_Id       Int
+}
+
+model Pedido{
+  Id            Int                  @id @default(autoincrement())
+  CPF           Cliente              @relation(fields: [Cliente_CPF], references: [CPF])
+  Cliente_CPF   String               @db.Char(11)
+  End           Enderecos_Cliente    @relation(fields: [End_Id], references: [Id])
+  End_Id        Int
+  DH            DateTime             @default(now())
+  Desconto      Int                  @default(0)
+  Total         Float
+  Pagamento     String               @db.VarChar(100)
+
+  Pedido_Produtos Pedido_Produtos[]
+}
+
+model Pedido_Produtos{
+  Prod          Produto      @relation(fields: [Prod_Id], references: [Id])
+  Prod_Id       Int
+  Ped           Pedido       @relation(fields: [Ped_Id], references: [Id])
+  Ped_Id        Int
+  @@id([Prod_Id, Ped_Id])
+}
