@@ -1,0 +1,22 @@
+import { Product, PrismaClient } from "@prisma/client";
+import { CreateProductDto } from './product.types';
+
+const prisma = new PrismaClient();
+
+async function list(): Promise<Product[]> {
+    return prisma.product.findMany();
+}
+
+async function checkAlreadyExists(name: string): Promise<boolean>{
+    return !!(await prisma.product.findUnique({ where: { name } }));
+}
+
+async function create(product: CreateProductDto): Promise<Product> {
+    return prisma.product.create({ data: product });
+}
+
+async function read(id: string): Promise<Product>{
+    return prisma.product.findUnique({where:{id}}) as Promise<Product>;
+}
+
+export default {list, checkAlreadyExists, create, read}
