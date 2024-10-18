@@ -1,11 +1,11 @@
 import { PrismaClient} from '@prisma/client';
-import myCliente from '../../types/cliente';
+import Cliente from '../../types/cliente';
 
 
 const prisma = new PrismaClient();
 
 // Função para criar um novo cliente
-async function createCliente(cliente: myCliente){
+async function createCliente(cliente: Cliente){
   const novoCliente = await prisma.cliente.create({
     data: {
           nome: cliente.nome,
