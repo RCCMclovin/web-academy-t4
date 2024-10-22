@@ -25,8 +25,26 @@ const create = async (req: Request, res: Response) => {
     }
 };
 const update = async (req: Request, res: Response) => {
+  try {
+    const product = req.body as CreateProductDto;
+    if (await productService.checkAlreadyExists(product.name)) {
+      const newProduct = productService.update(req.params.id, product);
+      res.json(newProduct);
+    } else {
+      res.status(StatusCodes.NOT_ACCEPTABLE).send(ReasonPhrases.NOT_ACCEPTABLE);
+    }
+  } catch (e) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
+    }
 };
-const remove = async (req: Request, res: Response) => {};
+const remove = async (req: Request, res: Response) => {
+  try {
+    const product = productService.remove(req.params.id)
+    res.json(product);
+  } catch (e) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
+    }
+};
 const read = async (req: Request, res: Response) => {
   try {
     const product = productService.read(req.params.id)

@@ -19,4 +19,17 @@ async function read(id: string): Promise<Product>{
     return prisma.product.findUnique({where:{id}}) as Promise<Product>;
 }
 
-export default {list, checkAlreadyExists, create, read}
+async function update(id: string, product: CreateProductDto): Promise<Product>{
+    return prisma.product.update({
+        where: { id },
+        data: product,
+    });
+}
+
+async function remove(id: string): Promise<Product>{
+    return prisma.product.delete({
+        where: { id },
+    });
+}
+
+export default {list, checkAlreadyExists, create, read, update, remove}
