@@ -15,7 +15,7 @@ const create = async (req: Request, res: Response) => {
   try {
     const product = req.body as CreateProductDto;
     if (!(await productService.checkAlreadyExists(product.name))) {
-      const newProduct = productService.create(product);
+      const newProduct = await productService.create(product);
       res.json(newProduct);
     } else {
       res.status(StatusCodes.CONFLICT).send(ReasonPhrases.CONFLICT);
@@ -28,7 +28,7 @@ const update = async (req: Request, res: Response) => {
   try {
     const product = req.body as CreateProductDto;
     if (await productService.checkAlreadyExists(product.name)) {
-      const newProduct = productService.update(req.params.id, product);
+      const newProduct = await productService.update(req.params.id, product);
       res.json(newProduct);
     } else {
       res.status(StatusCodes.NOT_ACCEPTABLE).send(ReasonPhrases.NOT_ACCEPTABLE);
@@ -39,7 +39,7 @@ const update = async (req: Request, res: Response) => {
 };
 const remove = async (req: Request, res: Response) => {
   try {
-    const product = productService.remove(req.params.id)
+    const product = await productService.remove(req.params.id)
     res.json(product);
   } catch (e) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
@@ -47,7 +47,7 @@ const remove = async (req: Request, res: Response) => {
 };
 const read = async (req: Request, res: Response) => {
   try {
-    const product = productService.read(req.params.id)
+    const product = await productService.read(req.params.id);
     res.json(product);
   } catch (e) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
