@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y nginx
+
+ARG PORTA_ARG
+ENV PORTA=$PORTA_ARG
+
+EXPOSE $PORTA_ARG
+
+#docker build -t webacademy-nginx --build-arg PORTA_ARG=1234 .
+
