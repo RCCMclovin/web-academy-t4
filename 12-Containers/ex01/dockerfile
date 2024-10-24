@@ -1,14 +1,23 @@
 FROM ubuntu:latest
-RUN apt-get update && apt-get -y upgrade
+RUN apt-get update && apt-get -y upgrade && apt-get install -y gettext
 RUN apt-get install -y nginx
 
 ARG PORTA_ARG
 ENV PORTA=$PORTA_ARG
 
-EXPOSE $PORTA_ARG
+#Usando o arquivo nginx.conf para configurar a porta do servidor para ser a porta selecionada em $PORTA_ARG
+COPY nginx.conf /etc/nginx/nginx.template
+RUN export PORTA=${PORTA}
+RUN envsubst '$PORTA' < /etc/nginx/nginx.template > /etc/nginx/nginx.conf
+RUN rm /etc/nginx/nginx.template
+
+
+
+EXPOSE $PORTA_ARG/tcp
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
-#docker build -t webacademy-nginx --build-arg PORTA_ARG=80 .
-#docker run -d --name webacad_nginx -p 1234:80  webacademy-nginx
-#Expõe a porta do nginx (80) na porta 1234 do host
+#docker build -t webacademy-nginx --build-arg PORTA_ARG=7000 .
+#No primerio comando, você pode escolher qualquer porta.
+#docker run -d --name webacad_nginx -p 7000:7000  webacademy-nginx
+#Publicando a porta escolhida anteriormente na porta 7000 (7000:$PORTA_ARG)
