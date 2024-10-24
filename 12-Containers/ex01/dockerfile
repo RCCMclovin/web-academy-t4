@@ -7,5 +7,8 @@ ENV PORTA=$PORTA_ARG
 
 EXPOSE $PORTA_ARG
 
-#docker build -t webacademy-nginx --build-arg PORTA_ARG=1234 .
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
+#docker build -t webacademy-nginx --build-arg PORTA_ARG=80 .
+#docker run -d --name webacad_nginx -p 1234:80  webacademy-nginx
+#Expõe a porta do nginx (80) na porta 1234 do host
