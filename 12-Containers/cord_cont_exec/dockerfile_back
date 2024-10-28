@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get -y upgrade && apt-get install -y gettext
+RUN apt-get install -y npm
+
+COPY ./back/back.js /app/back.js
+RUN cd /app && npm init -y
+
+
+EXPOSE 4000/tcp
+
+CMD ["node", "/app/back.js"]

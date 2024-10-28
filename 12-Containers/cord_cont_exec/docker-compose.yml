@@ -1,0 +1,41 @@
+networks:
+  isolation-network:
+    driver: bridge
+
+services:
+  back:
+    build: 
+      context: .
+      dockerfile_inline: |
+        FROM ubuntu:latest
+        RUN apt-get update && apt-get -y upgrade
+        RUN apt-get install -y npm
+        COPY ./back/back.js /app/back.js
+        RUN cd /app && npm init -y
+        EXPOSE 4000/tcp
+    container_name: "back"
+    hostname: "back"
+    ports:
+      - 4000:4000
+    command: "node /app/back"
+    networks:
+      - isolation-network
+  
+  front:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM ubuntu:latest
+        RUN apt-get update && apt-get -y upgrade
+        RUN apt-get install -y npm
+        COPY ./front/front.js /app/front.js
+        RUN cd /app && npm init -y
+        EXPOSE 3000/tcp
+    container_name: front
+    ports:
+      - 3000:3000
+    command: "node /app/front"
+    networks:
+      - isolation-network
+
+

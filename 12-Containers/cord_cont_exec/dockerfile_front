@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get -y upgrade && apt-get install -y gettext
+RUN apt-get install -y npm
+
+COPY ./front/front.js /app/front.js
+RUN cd /app && npm init -y
+
+
+EXPOSE 3000/tcp
+
+CMD ["node", "/app/front.js"]

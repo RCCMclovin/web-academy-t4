@@ -1,0 +1,7 @@
+docker network create webacad_net
+
+docker build -t frontend -f dockerfile_front .
+docker run -d --name webacad_front -p 3000:3000 --network webacad_net frontend
+
+docker build -t backend -f dockerfile_back .
+docker run --name back -p 4000:4000 --network webacad_net backend
