@@ -1,0 +1,72 @@
+networks:
+  isolation-network:
+    driver: bridge
+
+volumes:
+  db-data:
+  back-logs:
+
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: UmaSenhaMuitoForte
+    container_name: "db"
+    hostname: "db"
+    #command: mysql -u root --password=UmaSenhaMuitoForte -h localhost < ./bd/script.sql
+    ports:
+      - 3306:3306
+    networks:
+      - isolation-network      
+    volumes:
+      - db-data:/var/lib/mysql
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    networks:
+      - isolation-network
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      ServerName: pma
+    ports:
+      - 8081:80
+
+  backend:
+    container_name: "backend"
+    hostname: "backend"
+    build: 
+      context: ./backend
+      dockerfile: ./Dockerfile
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - isolation-network
+    ports:
+      - 4444:4444
+    volumes:
+      - back-logs:/app/log
+
+  frontend:
+    container_name: "frontend"
+    hostname: "frontend"
+    build: 
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - 8000:80
+    networks:
+      - isolation-network
+
+
