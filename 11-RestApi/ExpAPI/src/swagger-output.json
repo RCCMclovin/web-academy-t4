@@ -1,0 +1,526 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API da Loja virtual",
+    "description": "Documentação da API",
+    "version": "1.0.1"
+  },
+  "host": "localhost:5555",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/v1/auth/signup": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Usuário faz Login.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SignUpDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/UserDTO"
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Email informado já está sendo usado."
+          }
+        }
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Usuário faz Login.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/AuthDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Usuário ou senha incorretos."
+          }
+        }
+      }
+    },
+    "/v1/auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Usuário faz Login.",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Usuário não logado."
+          }
+        }
+      }
+    },
+    "/v1/language/": {
+      "post": {
+        "tags": [
+          "Linguagem"
+        ],
+        "summary": "Muda a linguagem da API.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ChangeLanguageDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/products/": {
+      "get": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Recupera dados de todos os produtos.",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Adiciona um novo produto na base.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateProductDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Product"
+            },
+            "description": "Created"
+          },
+          "409": {
+            "description": "Já existe um produto com o nome informado"
+          }
+        }
+      }
+    },
+    "/v1/products/{id}": {
+      "get": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Recupera dados de um produto específico.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do produto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Remove os dados de um produto específico.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do produto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Produtos"
+        ],
+        "summary": "Atualiza os dados de um produto específico.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do produto"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateProductDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "406": {
+            "description": "Não existe um produto com o id informado"
+          }
+        }
+      }
+    },
+    "/v1/users/": {
+      "get": {
+        "tags": [
+          "Usuários"
+        ],
+        "summary": "Recupera dados de todos os usuários.",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserDTO"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Usuários"
+        ],
+        "summary": "Adiciona um novo usuário na base.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateUserDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/UserDTO"
+            },
+            "description": "Created"
+          },
+          "409": {
+            "description": "Já existe um usuário com o id informado"
+          }
+        }
+      }
+    },
+    "/v1/users/{id}": {
+      "get": {
+        "tags": [
+          "Usuários"
+        ],
+        "summary": "Recupera dados de um usuário específico.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do usuário"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDTO"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuários"
+        ],
+        "summary": "Atualiza os dados de um usuário específico.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do usuário"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CreateUserDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDTO"
+            }
+          },
+          "406": {
+            "description": "Não existe um usuário com o id informado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuários"
+        ],
+        "summary": "Remove os dados de um usuário específico.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do usuário"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDTO"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateProductDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Modern Soft Sausages"
+        },
+        "price": {
+          "type": "number",
+          "example": 2699
+        },
+        "stockQuantity": {
+          "type": "number",
+          "example": 9
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "8a2053de-5d92-4c43-97c0-c9b2b0d56703"
+        },
+        "name": {
+          "type": "string",
+          "example": "Modern Soft Sausages"
+        },
+        "price": {
+          "type": "number",
+          "example": 2699
+        },
+        "stockQuantity": {
+          "type": "number",
+          "example": 9
+        },
+        "createdAt": {
+          "type": "string",
+          "example": "2023-11-07T19:27:15.645Z"
+        },
+        "updatedAt": {
+          "type": "string",
+          "example": "2023-11-07T19:27:15.645Z"
+        }
+      }
+    },
+    "ChangeLanguageDTO": {
+      "type": "object",
+      "properties": {
+        "lang": {
+          "type": "string",
+          "example": "pt-BR"
+        }
+      }
+    },
+    "AuthDTO": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "email@example.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "SenhaMuitoForte"
+        }
+      }
+    },
+    "SignUpDto": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Fulano de Tal"
+        },
+        "email": {
+          "type": "string",
+          "example": "email@example.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "SenhaMuitoForte"
+        }
+      }
+    },
+    "CreateUserDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Fulano de Tal"
+        },
+        "email": {
+          "type": "string",
+          "example": "email@example.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "SenhaMuitoForte"
+        },
+        "userTypeId": {
+          "type": "string",
+          "example": "3299edf2-faf0-4d18-addd-0e530e0024ff"
+        }
+      }
+    },
+    "UserDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Fulano de Tal"
+        },
+        "email": {
+          "type": "string",
+          "example": "email@example.com"
+        },
+        "userTypeId": {
+          "type": "string",
+          "example": "3299edf2-faf0-4d18-addd-0e530e0024ff"
+        }
+      }
+    },
+    "UpdateUserDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Fulano de Tal"
+        },
+        "email": {
+          "type": "string",
+          "example": "email@example.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "SenhaMuitoForte"
+        }
+      }
+    }
+  }
+}

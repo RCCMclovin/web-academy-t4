@@ -1,10 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 
-const setLangCookie = (req: Request, res: Response, next: NextFunction) => {
-    if (!("lang" in req.cookies)) {
-        res.cookie("lang", "pt-BR");
+
+const setLangCookie = (defaultLang: string) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        if (!("lang" in req.cookies)) {
+            res.cookie("lang", defaultLang);
+        }
+        next();
     }
-    next();
 }
 
 export default setLangCookie;

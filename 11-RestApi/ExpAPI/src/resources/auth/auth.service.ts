@@ -1,11 +1,12 @@
-const users = [
-    { id: 1, email: "user@user.com", password: "senha123" },
-    {id:2, email: "u2@u2.com", password:"senha123"},
-]
+import { AuthDTO } from './auth.types';
+import userService from '../user/user.service';
+import { compare } from 'bcryptjs';
 
-export const checkAuth = (email: string, password: string): number | null => {
-    const user = users.find((u) => u.email === email && u.password === password);
-    if (user) return user.id;
-    return null;
-}
-
+export const checkAuth = async (
+  credentials: AuthDTO,
+): Promise<string | null> => {
+  const user = await userService.findUserByEmail(credentials.email);
+  if (user && (await compare(credentials.password, user.password)))
+    return user.id;
+  return null;
+};
