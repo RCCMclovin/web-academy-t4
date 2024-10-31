@@ -10,6 +10,6 @@ router.get('/', isAdmin, userController.index);
 router.post('/', isAdmin, validate(userSchema), userController.create);
 router.get('/:id', userController.read);
 router.put('/:id', validate(userSchema), userController.update);
-router.delete('/:id', isAdmin, userController.remove);
+router.delete('/:id', userController.remove);
 
 export default router;
