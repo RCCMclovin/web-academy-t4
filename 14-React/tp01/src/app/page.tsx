@@ -26,7 +26,7 @@ export default function ProdutosPage() {
   const [itensCarrinho, setItensCarrinho] = React.useState<Carrinho>({ produtos: mockItensCarrinho });
   const [valorTotal, setValorTotal] = React.useState<number>(total(itensCarrinho.produtos));
   const [quantidadeItens, setQuantidadeItens] = React.useState<number>(sum(itensCarrinho.produtos));
-  const inserirProduto = (produto:Produto) =>{
+  const adicionarAoCarrinho = (produto:Produto) =>{
     let atualizado: boolean = false;
     itensCarrinho.produtos.forEach((p) => {
         if (!atualizado && p.id === produto.id) {
@@ -60,7 +60,7 @@ export default function ProdutosPage() {
             setQuantidadeItens={setQuantidadeItens}
             sum={sum}
             total={total}
-            inserirProduto={inserirProduto}
+            adicionarAoCarrinho={adicionarAoCarrinho}
           ></ListagemProdutos>
 
           
