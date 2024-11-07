@@ -1,5 +1,6 @@
 "use client";
 import useListaProdutos from "../hooks/useListaProdutos";
+import Produto from "../types/produto";
 import CardProduto from "./CardProduto";
 import AllProductsProp from "./props/AllProductsProp";
 
@@ -9,11 +10,11 @@ export default function ListagemProdutos(props: AllProductsProp) {
   const { produtos, isPending, isError } = useListaProdutos();
   if (isPending) return <h5>Carregando...</h5>;
   if (isError) return <h5>Ocorreu um erro ao carregar os produtos. :(</h5>;
-  if (!produtos) return <h5>Não há produtos disponíveis no momento.</h5>;
+  if (!produtos) return<h5>Não há produtos disponíveis no momento.</h5>;
   
   const listarProdutos = (): JSX.Element[] =>{
     const cards: JSX.Element[] = [];
-    produtos.forEach((produto) => {
+    produtos.forEach((produto: Produto) => {
       if (produto.fotos) {
         cards.push(
           <CardProduto itensCarrinho={props.itensCarrinho}

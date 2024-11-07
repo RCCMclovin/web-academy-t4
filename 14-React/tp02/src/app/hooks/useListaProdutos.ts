@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import getListaproduto from "../services/produtos";
+import { getListaproduto } from "../services/produtos";
 
 export default function useListaProdutos() {
   const { data, isPending, isError } = useQuery({
