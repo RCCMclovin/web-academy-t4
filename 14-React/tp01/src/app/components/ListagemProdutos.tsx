@@ -5,7 +5,7 @@ import AllProductsProp from "./props/AllProductsProp";
 
   
 export default function ListagemProdutos(props: AllProductsProp) {
-  const listarProdutos = (props: AllProductsProp): JSX.Element[] =>{
+  const listarProdutos = (): JSX.Element[] =>{
     const cards: JSX.Element[] = [];
     props.produtos.forEach((produto) => {
       if (produto.fotos) {
@@ -39,7 +39,7 @@ export default function ListagemProdutos(props: AllProductsProp) {
 
   return (
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">            
-        {listarProdutos(props)}
+        {listarProdutos()}
       </div>
   );
 }

@@ -26,7 +26,14 @@ export default function CarrinhoPage() {
   const [itensCarrinho, setItensCarrinho] = React.useState<Carrinho>({ produtos: mockItensCarrinho });
   const [valorTotal, setValorTotal] = React.useState<number>(total(itensCarrinho.produtos));
   const [quantidadeItens, setQuantidadeItens] = React.useState<number>(sum(itensCarrinho.produtos));
-  
+  const removerItemDoCarrinho = (id: string) => {
+    setItensCarrinho((carrinho) => {
+        carrinho.produtos = carrinho.produtos.filter((prod) => prod.id != id);
+        setQuantidadeItens(sum(carrinho.produtos));
+        setValorTotal(total(carrinho.produtos));
+        return carrinho;
+    })
+  }
 
 
   return (
@@ -40,6 +47,7 @@ export default function CarrinhoPage() {
             setQuantidadeItens={setQuantidadeItens}
             sum={sum}
             total={total}
+            removerItemDoCarrinho={removerItemDoCarrinho}
           ></ListagemCarrinho>
 
           <ResumoCarrinho

@@ -4,8 +4,7 @@ import Image from "next/image";
 
 
 export default function CardProduto(props: ICardProdutoProp) {
-
-    const inserirProduto = (props: ICardProdutoProp) =>{
+    const inserirProduto = () =>{
         let atualizado: boolean = false;
         props.itensCarrinho.produtos.forEach((p) => {
             if (!atualizado && p.id === props.produto.id) {
@@ -36,7 +35,7 @@ export default function CardProduto(props: ICardProdutoProp) {
                     <h5 className="card-title">{props.produto.nome}</h5>
                     <p className="card-text text-secondary">R$ {props.produto.preco}</p>
                     <button className="btn btn-dark d-block w-100" type="button"
-                    onClick={() => inserirProduto(props)}>
+                    onClick={() => inserirProduto()}>
                         Adicionar no carrinho
                     </button>
                 </div>

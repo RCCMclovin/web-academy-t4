@@ -8,4 +8,5 @@ export default interface ICarrinhoProps {
   setQuantidadeItens: React.Dispatch<React.SetStateAction<number>>;
   sum: (produtos: ItemCarrinho[]) => number;
   total: (produtos: ItemCarrinho[]) => number;
+  removerItemDoCarrinho: (id: string) => void;
 }
