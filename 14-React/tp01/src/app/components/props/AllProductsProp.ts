@@ -11,4 +11,5 @@ export default interface AllProductsProp {
   setQuantidadeItens: React.Dispatch<React.SetStateAction<number>>;
   sum: (produtos: ItemCarrinho[]) => number;
   total: (produtos: ItemCarrinho[]) => number;
+  inserirProduto: (produto: Produto) => void;
 }

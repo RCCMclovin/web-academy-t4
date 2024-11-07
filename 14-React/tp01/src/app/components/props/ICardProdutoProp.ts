@@ -12,4 +12,5 @@ export default interface ICardProdutoProp {
   setQuantidadeItens: React.Dispatch<React.SetStateAction<number>>;
   sum: (produtos: ItemCarrinho[]) => number;
   total: (produtos: ItemCarrinho[]) => number;
+  inserirProduto: (produto: Produto) => void;
 }

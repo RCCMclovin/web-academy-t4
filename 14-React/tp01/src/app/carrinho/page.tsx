@@ -12,7 +12,6 @@ const sum = (arr: ItemCarrinho[]): number =>{
   return s;
 }
 
-
 const total = (carrinho: ItemCarrinho[]) =>{
   let s: number = 0;
   for (let i = 0; i < carrinho.length; i++){
@@ -20,7 +19,6 @@ const total = (carrinho: ItemCarrinho[]) =>{
   }
   return s;
 }
-
 
 export default function CarrinhoPage() {
   const [itensCarrinho, setItensCarrinho] = React.useState<Carrinho>({ produtos: mockItensCarrinho });
@@ -34,7 +32,6 @@ export default function CarrinhoPage() {
         return carrinho;
     })
   }
-
 
   return (
     <>

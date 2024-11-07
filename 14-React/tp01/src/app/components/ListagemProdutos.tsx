@@ -18,6 +18,7 @@ export default function ListagemProdutos(props: AllProductsProp) {
             setQuantidadeItens={props.setQuantidadeItens}
             sum={props.sum}
             total={props.total}
+            inserirProduto={props.inserirProduto}
           ></CardProduto>
         );
       } else {
@@ -30,6 +31,7 @@ export default function ListagemProdutos(props: AllProductsProp) {
             setQuantidadeItens={props.setQuantidadeItens}
             sum={props.sum}
             total={props.total}
+            inserirProduto={props.inserirProduto}
           ></CardProduto>
         );
       }
