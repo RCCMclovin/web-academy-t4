@@ -2,29 +2,21 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { FormEvent } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-export default function Login() {
-    const [errorPass, setErrorPass] = React.useState<null | string>(null);
-    const [errorEmail, setErrorEmail] = React.useState<null | string>(null);
-    const [email, setEmail] = React.useState<string>("");
-    const [pass, setPass] = React.useState<string>("");
+type Login = {
+    email: string;
+    senha: string;
+}
+
+export default function LoginPage() {
+    const { register, handleSubmit, formState: { errors }, } = useForm<Login>();
     const router = useRouter();
-
-    const validade = (value: string, setError: React.Dispatch<React.SetStateAction<null | string>>): boolean => {
-        if (value.length === 0) {
-            setError("Preencha este campo.")
-            return false;
-        } else {
-            setError(null);
-            return true;
-        }
-    }
-
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const onSubmit: SubmitHandler<Login> = (data) => {
+        console.log(data);
         router.push("/");
     }
+
 
   return (
     <main>
@@ -32,9 +24,9 @@ export default function Login() {
         <div className="row min-vw-100">
           <div className="col-12 col-md-4 bg-light d-flex justify-content-center align-items-center">
             <h2>Bem vindo à WA Loja!</h2>
-          </div>{" "}
+          </div>
           <div className="col-12 col-md-8 d-flex justify-content-center align-items-center">
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
                   Email
@@ -43,13 +35,10 @@ export default function Login() {
                   type="email"
                   className="form-control form-control-lg"
                   id="email"
-                  aria-describedby="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}                
-                  onBlur={({target}) => validade(target.value, setErrorEmail)}                
-                  required
+                  aria-describedby="email"         
+                  {...register("email", {required:true})}
                 />
-                {errorEmail && <p>{errorEmail}</p>}
+                {errors.email?.type === "required" && <span className="text-danger">Preencha este campo</span>}
               </div>
               <div className="mb-3">
                 <label htmlFor="senha" className="form-label">
@@ -58,12 +47,10 @@ export default function Login() {
                 <input
                   type="password"
                   className="form-control form-control-lg"
-                  id="senha"value={pass}
-                  onChange={(event) => setPass(event.target.value)}                
-                  onBlur={({target}) => validade(target.value, setErrorPass)}  
-                  required
+                  {...register("senha", {required: true, minLength: 6})}                
                 />
-                {errorPass && <p>{errorPass}</p>}
+                {errors.senha?.type === "required" && <span className="text-danger">Preencha este campo</span>}
+                {errors.senha?.type === "minLength" && <span className="text-danger">Ao menos 6 caracteres.</span>}
               </div>
 
               <div className="d-grid col-12">

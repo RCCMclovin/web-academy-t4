@@ -1,44 +1,30 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { FormEvent } from "react";
+import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-export default function Cadastro() {
-    const [errorPreenchimentoEmail, setErrorPreenchimentoEmail] = React.useState<null | string>(null);
-    const [errorPreenchimentoVEmail, setErrorPreenchimentoVEmail] = React.useState<null | string>(null);
-    const [errorPreenchimentoNome, setErrorPreenchimentoNome] = React.useState<null | string>(null);
-    const [errorPreenchimentoPass, setErrorPreenchimentoPass] = React.useState<null | string>(null);
-    const [errorEmail, setErrorEmail] = React.useState<null | string>(null);
-    const [email, setEmail] = React.useState<string>("");
-    const [pass, setPass] = React.useState<string>("");
-    const [vEmail, setVEmail] = React.useState<string>("");
-    const [nome, setNome] = React.useState<string>("");
+type Cadastro = {
+    nome: string;
+    email: string;
+    vEmail: string;
+    senha: string;
+}
+
+export default function CadastroPage() {
+    const { register, handleSubmit, formState: { errors }, getValues} = useForm<Cadastro>();
     const router = useRouter();
-
-    const validade = (value: string, setError: React.Dispatch<React.SetStateAction<null | string>>): boolean => {
-        if (value.length === 0) {
-            setError("Preencha este campo.")
-            return false;
-        } else {
-            setError(null);
-            return true;
-        }
-    }
-
-    const checkEmail = (email1: string, email2: string): boolean => {
-        if (email1 === email2) {
-            setErrorEmail(null);
-            return true;
-        } else {
-            setErrorEmail("Emails devem ser iguais");
-            return false;
-        }
-    }
-
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const onSubmit: SubmitHandler<Cadastro> = (data) => {
+        console.log(data);
         router.push("/");
     }
+    
+
+    const checkEmail = (email1: string, email2: string): boolean | string => {
+        return (email1 === email2) || "Emails devem ser iguais";
+    }
+
+    
 
   return (
     <main>
@@ -48,7 +34,7 @@ export default function Cadastro() {
             <h2>Bem vindo à WA Loja!</h2>
           </div>
           <div className="col-12 col-md-8 d-flex justify-content-center align-items-center">
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-3">
                 <label htmlFor="nome" className="form-label">
                   Nome
@@ -58,11 +44,8 @@ export default function Cadastro() {
                   className="form-control form-control-lg"
                   id="nome"
                   aria-describedby="nome"
-                  value={nome}
-                  onChange={(event) => setNome(event.target.value)}                
-                  onBlur={({target}) => validade(target.value, setErrorPreenchimentoNome)}  
-                  required
-                />{errorPreenchimentoNome && <p>{errorPreenchimentoNome}</p>}
+                  {...register("nome", {required:true})}
+                />{errors.nome?.type === "required" && <span className="text-danger">Preencha este campo</span>}
               </div>
 
               <div className="mb-3">
@@ -74,12 +57,14 @@ export default function Cadastro() {
                   className="form-control form-control-lg"
                   id="email"
                   aria-describedby="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}                
-                  onBlur={({target}) => validade(target.value, setErrorPreenchimentoEmail)}  
-                  required
-                />{errorPreenchimentoEmail && <p>{errorPreenchimentoEmail}</p>}
-              </div>
+                  {...register("email", {required:true, pattern: {
+                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,5}$)+/,
+                    message: 'Email inválido',
+                  },})}
+                />
+                {errors.email?.type === "required" && <span className="text-danger">Preencha este campo</span>}
+                {errors.email?.type === "pattern" && <span className="text-danger">{errors.email.message}</span>}              
+                </div>
 
               <div className="mb-3">
                 <label htmlFor="confirmarEmail" className="form-label">
@@ -90,11 +75,10 @@ export default function Cadastro() {
                   className="form-control form-control-lg"
                   id="confirmarEmail"
                   aria-describedby="confirmarEmail"
-                  value={vEmail}
-                  onChange={(event) => setVEmail(event.target.value)}                
-                  onBlur={({ target }) => validade(target.value, setErrorPreenchimentoVEmail) || checkEmail(email, target.value)}
-                  required
-                />{(errorPreenchimentoVEmail || errorEmail) && <p>{(errorPreenchimentoVEmail || errorEmail)}</p>}
+                  {...register("vEmail", {required:true, validate: (value) => checkEmail(getValues().email, value)})}
+                />
+              {errors.vEmail?.type === "required" && <span className="text-danger">Preencha este campo</span>}
+              {errors.vEmail?.type === "validate" && <span className="text-danger">{errors.vEmail.message}</span>}
               </div>
               <div className="mb-3">
                 <label htmlFor="senha" className="form-label">
@@ -104,11 +88,10 @@ export default function Cadastro() {
                   type="password"
                   className="form-control form-control-lg"
                   id="senha"
-                  value={pass}
-                  onChange={(event) => setPass(event.target.value)}                
-                  onBlur={({target}) => validade(target.value, setErrorPreenchimentoPass)}  
-                  required
-                />{errorPreenchimentoPass && <p>{errorPreenchimentoPass}</p>}
+                  {...register("senha", {required: true, minLength: 6})}
+                />
+                {errors.senha?.type === "required" && <span className="text-danger">Preencha este campo</span>}
+                {errors.senha?.type === "minLength" && <span className="text-danger">Ao menos 6 caracteres.</span>}
               </div>
 
               <div className="d-grid col-12">
