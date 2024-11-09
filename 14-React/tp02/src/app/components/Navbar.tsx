@@ -1,5 +1,8 @@
 "use client";
+import { usePathname } from "next/navigation";
 export default function Navbar() {
+    const pathname = usePathname();
+    if (pathname === "/login" || pathname === "/cadastro") return null;
     return (
         <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
             <div className="container-fluid">
@@ -29,9 +32,17 @@ export default function Navbar() {
                                 Carrinho
                             </a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/favoritos">
+                                Favoritos
+                            </a>
+                        </li>
                     </ul>
 
-                    <button className="btn btn-dark">Sair</button>
+                    <a className="nav-link" href="/login">
+                        <button className="btn btn-dark">Login</button>
+                    </a>
+                    
                 </div>
             </div>
         </nav>

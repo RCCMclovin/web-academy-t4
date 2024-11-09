@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import useAddFavorito from "../hooks/useAddFavorito";
 import ICardProdutoProp from "./props/ICardProdutoProp";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 
 export default function CardProduto(props: ICardProdutoProp) {
@@ -11,6 +12,9 @@ export default function CardProduto(props: ICardProdutoProp) {
         () => toast.success("Produto favoritado com sucesso!"),
         () => toast.error("Algo deu errado.")
     );
+
+    const router = useRouter();
+    const verDetalhesProduto = (nomeProduto: string) => { router.push(`/produto/${nomeProduto}`) }
     
 
     return (
@@ -22,6 +26,7 @@ export default function CardProduto(props: ICardProdutoProp) {
                     alt={props.img.alt}
                     width={300}
                     height={320}
+                    onClick={() => verDetalhesProduto(props.produto.nome)}
                 />
 
                 <div className="card-body bg-light">
