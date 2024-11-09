@@ -2,7 +2,6 @@
 import React from "react";
 import ResumoCarrinho from "./components/ResumoCarrinho";
 import ListagemProdutos from "./components/ListagemProdutos";
-import { mockItensCarrinho } from "./mocks/itensCarrinho";
 import Carrinho from "./types/carrinho";
 import ItemCarrinho from "./types/itemCarrinho";
 import Produto from "./types/produto";
@@ -22,7 +21,7 @@ const total = (carrinho: ItemCarrinho[]) =>{
 }
 
 export default function ProdutosPage() {
-  const [itensCarrinho, setItensCarrinho] = React.useState<Carrinho>({ produtos: mockItensCarrinho });
+  const [itensCarrinho, setItensCarrinho] = React.useState<Carrinho>({ produtos: [] });
   const [valorTotal, setValorTotal] = React.useState<number>(total(itensCarrinho.produtos));
   const [quantidadeItens, setQuantidadeItens] = React.useState<number>(sum(itensCarrinho.produtos));
   const adicionarAoCarrinho = (produto:Produto) =>{
