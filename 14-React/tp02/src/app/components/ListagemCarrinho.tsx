@@ -1,4 +1,5 @@
 "use client";
+import Produto from "../types/itemCarrinho";
 import ItemCarrinho from "./ItemCarrinho";
 import ICarrinhoProps from "./props/ICarrinhoProps";
 
@@ -6,23 +7,12 @@ import ICarrinhoProps from "./props/ICarrinhoProps";
 
 
 export default function ListagemCarrinho(props: ICarrinhoProps) {
-  const generateRows = (): JSX.Element[] => {
-    const rows: JSX.Element[] = [];
-    const numProds: number = props.carrinho.produtos.length
-    for(let i = 0; i < numProds; i++) {
-      rows.push(
+  const generateRows = (produto: Produto): JSX.Element => {
+      return (
         <ItemCarrinho
-          produto={props.carrinho.produtos[i]}
-          setItensCarrinho={props.setItensCarrinho}
-          quantidade={props.carrinho.produtos[i].quantidade}
-          setValorTotal={props.setValorTotal}
-          setQuantidadeItens={props.setQuantidadeItens}
-          sum={props.sum}
-          total={props.total}
+          produto={produto}
           removerItemDoCarrinho={props.removerItemDoCarrinho}></ItemCarrinho>
       );
-    }
-    return rows;
   }
   
     return (
@@ -43,7 +33,7 @@ export default function ListagemCarrinho(props: ICarrinhoProps) {
                     </tr>
                   </thead>
                   <tbody>
-                {generateRows()}
+                {props.carrinho.produtos.map(generateRows)}
                   </tbody>
                 </table>
               </div>

@@ -21,9 +21,9 @@ export default function CardProduto(props: ICardProdutoProp) {
         <div className="card shadow-sm h-100">
             <div className="col">
                 <Image
-                    src={props.img.src}
+                    src={props.produto.fotos ? props.produto.fotos[0].src : "/placeholder.png"}
                     className="card-img-top"
-                    alt={props.img.alt}
+                    alt={props.produto.fotos ? props.produto.fotos[0].titulo : "Imagem placeholder"}
                     width={300}
                     height={320}
                     onClick={() => verDetalhesProduto(props.produto.nome)}

@@ -52,12 +52,6 @@ export default function ProdutosPage() {
           <h5 className="mb-3">Produtos disponíveis:</h5>
 
           <ListagemProdutos 
-            itensCarrinho={itensCarrinho}
-            setItensCarrinho={setItensCarrinho}
-            setValorTotal={setValorTotal}
-            setQuantidadeItens={setQuantidadeItens}
-            sum={sum}
-            total={total}
             adicionarAoCarrinho={adicionarAoCarrinho}
           ></ListagemProdutos>
 

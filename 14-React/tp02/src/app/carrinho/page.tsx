@@ -39,11 +39,6 @@ export default function CarrinhoPage() {
         <div  className="container p-5">
         <ListagemCarrinho 
             carrinho={itensCarrinho}
-            setItensCarrinho={setItensCarrinho}
-            setValorTotal={setValorTotal}
-            setQuantidadeItens={setQuantidadeItens}
-            sum={sum}
-            total={total}
             removerItemDoCarrinho={removerItemDoCarrinho}
           ></ListagemCarrinho>
 

@@ -1,21 +1,16 @@
 "use client";
 
+import Produto from "../types/produto";
 import ItemFavorito from "./ItemFavorito";
 import IListagemFavoritosProps from "./props/IListagemFavoritosProps";
 
 export default function ListagemFavoritos(props: IListagemFavoritosProps) {
-    const generateRows = (): JSX.Element[] => {
-      const rows: JSX.Element[] = [];
-      const numProds: number = props.favoritos.length
-      for(let i = 0; i < numProds; i++) {
-        rows.push(
-            <ItemFavorito produto={props.favoritos[i]}
-                refreshFavoritos={props.refreshFavoritos}>    
-            </ItemFavorito>
-            
-        );
-      }
-      return rows;
+  const generateRows = (favorito: Produto): JSX.Element => {
+      return (
+        <ItemFavorito produto={favorito}
+          refreshFavoritos={props.refreshFavoritos}>    
+        </ItemFavorito>      
+      );
     }
     
       return (
@@ -34,7 +29,7 @@ export default function ListagemFavoritos(props: IListagemFavoritosProps) {
                       </tr>
                     </thead>
                     <tbody>
-                  {generateRows()}
+                  {props.favoritos.map(generateRows)}
                     </tbody>
                   </table>
                 </div>
