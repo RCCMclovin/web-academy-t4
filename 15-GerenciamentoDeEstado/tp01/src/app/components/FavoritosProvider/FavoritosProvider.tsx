@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface IFavoritosContext{
     favoritos: Produto[];
@@ -26,5 +26,11 @@ const FavoritosProvider = ({ children }: FavoritosProviderProps) => {
         </FavoritosContext.Provider>
     )
 }
+
+export const useFavoritosContext = () => {
+    const favoritosContext = useContext(FavoritosContext);
+    
+    return favoritosContext;
+};
 
 export default FavoritosProvider;
