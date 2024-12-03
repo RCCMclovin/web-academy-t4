@@ -36,6 +36,7 @@ function verificarDisponibilidadeEstoque(tipoProduto, quantidade) {
     tablet: 15,
     livro: 0,
   };
+  if(!(tipoProduto in estoque)) return false;
 
   const estoqueDisponivel = estoque[tipoProduto];
   //Modificando o teste lógico para verificar se a quantidade é maior que o estoque

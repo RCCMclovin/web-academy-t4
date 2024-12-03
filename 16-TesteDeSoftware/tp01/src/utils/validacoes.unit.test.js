@@ -23,6 +23,7 @@ describe("Testando todas as funções em validacoes.js:", () =>{
             { descricao: "Quantidade menor do que estoque", produto: "laptop", quantidade: 5, result: true },
             { descricao: "Quantidade igual ao estoque", produto: "smartphone", quantidade: 20, result: true },
             { descricao: "Quantidade maior do que estoque", produto: "headphone", quantidade: 10, result: false },
+            { descricao: "Produto não existe no estoque", produto: "head", quantidade: 10, result: false },
             { descricao: "Quantidade 0", produto: "tablet", quantidade: 0, result: true },
             { descricao: "Produto sem estoque", produto: "livro", quantidade: 1, result: false}
         ];
