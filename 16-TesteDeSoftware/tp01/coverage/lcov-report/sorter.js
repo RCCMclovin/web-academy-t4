@@ -68,7 +68,7 @@ var addSorting = (function() {
             if (col.sortable) {
                 col.defaultDescSort = col.type === 'number';
                 colNode.innerHTML =
-                    colNode.innerHTML + '<span class="sorter"></span>';
+                    colNode.innerHTML + '<span class="sorter"> ';
             }
         }
         return cols;

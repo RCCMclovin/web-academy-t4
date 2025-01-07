@@ -1,6 +1,6 @@
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
@@ -20,10 +20,10 @@ app.engine('handlebars', (0, express_handlebars_1.engine)({ helpers: require(`${
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
 app.use((0, node_sass_middleware_1.default)({
-    src: `${process.cwd()}/public/scss`,
-    dest: `${process.cwd()}/public/css`,
-    outputStyle: 'compressed',
-    prefix: '/css',
+src: `${process.cwd()}/public/scss`,
+dest: `${process.cwd()}/public/css`,
+outputStyle: 'compressed',
+prefix: '/css',
 }));
 app.use((0, logger_1.default)(LOGS_PATH, LOGS_TYPE));
 app.use(express_1.default.urlencoded({ extended: false }));
@@ -32,8 +32,8 @@ app.use('/css', express_1.default.static(`${process.cwd()}/public/css`));
 app.use('/js', express_1.default.static(`${process.cwd()}/public/js`));
 app.use(router_1.default);
 app.use((req, res) => {
-    res.send('404!');
+res.send('404!');
 });
 app.listen(PORT, () => {
-    console.log(`Express app iniciado na porta ${PORT}.`);
+console.log(`Express app iniciado na porta ${PORT}.`);
 });

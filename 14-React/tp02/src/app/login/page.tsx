@@ -38,7 +38,7 @@ export default function LoginPage() {
                   aria-describedby="email"         
                   {...register("email", {required:true})}
                 />
-                {errors.email?.type === "required" && <span className="text-danger">Preencha este campo</span>}
+                {errors.email?.type === "required" && <span className="text-danger">Preencha este campo }
               </div>
               <div className="mb-3">
                 <label htmlFor="senha" className="form-label">
@@ -49,8 +49,8 @@ export default function LoginPage() {
                   className="form-control form-control-lg"
                   {...register("senha", {required: true, minLength: 6})}                
                 />
-                {errors.senha?.type === "required" && <span className="text-danger">Preencha este campo</span>}
-                {errors.senha?.type === "minLength" && <span className="text-danger">Ao menos 6 caracteres.</span>}
+                {errors.senha?.type === "required" && <span className="text-danger">Preencha este campo }
+                {errors.senha?.type === "minLength" && <span className="text-danger">Ao menos 6 caracteres. }
               </div>
 
               <div className="d-grid col-12">

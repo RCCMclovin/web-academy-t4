@@ -34,7 +34,7 @@ export default function ItemFavorito({
           height={50}
         />
         <div className="d-flex flex-column ms-2">
-          <span className="">{itemFavorito.nome}</span>
+          <span className="">{itemFavorito.nome} 
           <small className="text-muted">{itemFavorito.descricao}</small>
         </div>
       </td>

@@ -42,10 +42,10 @@ export default function CardProduto({
         <div className="card-body bg-ligth">
           <span className="badge text-bg-success text-white mb-2 ">
             {produto.desconto}% de desconto
-          </span>
+           
 
           <h5 className="card-title fw-bold">{produto.nome}</h5>
-          <span className="text-secondary">De R$ {produto.preco}</span>
+          <span className="text-secondary">De R$ {produto.preco} 
           <h5 className="card-text">
             Por R${" "}
             {calculaValorComPorcentagemDeDesconto(

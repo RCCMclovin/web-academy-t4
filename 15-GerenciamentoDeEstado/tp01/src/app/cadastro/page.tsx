@@ -41,7 +41,7 @@ export default function Cadastro() {
                   {...register("nome", { required: true })}
                 />
                 {errors.nome && (
-                  <span className="text-danger">Esse campo é obrigatório</span>
+                  <span className="text-danger">Esse campo é obrigatório 
                 )}
               </div>
 
@@ -57,7 +57,7 @@ export default function Cadastro() {
                   {...register("email", { required: true })}
                 />
                 {errors.email && (
-                  <span className="text-danger">Esse campo é obrigatório</span>
+                  <span className="text-danger">Esse campo é obrigatório 
                 )}
               </div>
 
@@ -73,7 +73,7 @@ export default function Cadastro() {
                   {...register("emailConfirmar", { required: true })}
                 />
                 {errors.email && (
-                  <span className="text-danger">Esse campo é obrigatório</span>
+                  <span className="text-danger">Esse campo é obrigatório 
                 )}
               </div>
               <div className="mb-3">
@@ -88,13 +88,13 @@ export default function Cadastro() {
                 />
 
                 {errors.senha?.type === "required" && (
-                  <span className="text-danger">Esse campo é obrigatório</span>
+                  <span className="text-danger">Esse campo é obrigatório 
                 )}
 
                 {errors.senha?.type === "minLength" && (
                   <span className="text-danger">
                     Minímo de 6 (seis) caracteres{" "}
-                  </span>
+                   
                 )}
               </div>
 

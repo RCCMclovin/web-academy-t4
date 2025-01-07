@@ -37,7 +37,7 @@ export default function FormLogin() {
             {...register("email", { required: true })}
           />
           {errors.email && (
-            <span className="text-danger">Esse campo é obrigatório</span>
+            <span className="text-danger">Esse campo é obrigatório 
           )}
         </div>
         <div className="mb-3">
@@ -51,11 +51,11 @@ export default function FormLogin() {
             {...register("senha", { required: true, minLength: 6 })}
           />
           {errors.senha?.type === "required" && (
-            <span className="text-danger">Esse campo é obrigatório</span>
+            <span className="text-danger">Esse campo é obrigatório 
           )}
 
           {errors.senha?.type === "minLength" && (
-            <span className="text-danger">Minímo de 6 (seis) caracteres </span>
+            <span className="text-danger">Minímo de 6 (seis) caracteres  
           )}
         </div>
 

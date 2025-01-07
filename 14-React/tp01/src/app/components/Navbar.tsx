@@ -15,7 +15,7 @@ export default function Navbar() {
                     aria-expanded="false"
                     aria-label="Abrir menu"
                 >
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"> 
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">

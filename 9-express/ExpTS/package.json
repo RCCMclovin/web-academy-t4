@@ -1,44 +1,44 @@
 {
-  "name": "expts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./build/index.js",
-  "scripts": {
-    "start": "npx nodemon ./src/index.ts --watch ./src",
-    "build": "npx tsc && rm build/views/*/*.handlebars && cp --parents -r src/views/*/*.handlebars build/views/ && mv build/views/src/views/* build/views/ && rm -r build/views/src/",
-    "start:prod": "node ./build/index.js",
-    "lint": "npx eslint src/",
-    "lint:fix": "npx eslint --fix src/",
-    "format": "npx prettier --write src/",
-    "db:start": "npx json-server --watch ./data/db.json --port 5555"
-  },
-  "keywords": [],
-  "author": "Rafael Castilho Carvaho",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^1.7.7",
-    "dotenv": "^16.4.5",
-    "envalid": "^8.0.0",
-    "express": "^4.21.0",
-    "express-handlebars": "^8.0.1",
-    "json-server": "^1.0.0-beta.3",
-    "lorem-ipsum": "^2.0.8",
-    "node-sass-middleware": "^1.1.0",
-    "sass": "^1.79.3"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.11.0",
-    "@types/express": "^4.17.21",
-    "@types/express-handlebars": "^5.3.1",
-    "@types/morgan": "^1.9.9",
-    "@types/node": "^22.5.5",
-    "@types/node-sass-middleware": "^0.0.35",
-    "eslint": "^9.11.0",
-    "globals": "^15.9.0",
-    "nodemon": "^3.1.7",
-    "prettier": "^3.3.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.6.0"
-  }
+"name": "expts",
+"version": "1.0.0",
+"description": "",
+"main": "./build/index.js",
+"scripts": {
+"start": "npx nodemon ./src/index.ts --watch ./src",
+"build": "npx tsc && rm build/views/*/*.handlebars && cp --parents -r src/views/*/*.handlebars build/views/ && mv build/views/src/views/* build/views/ && rm -r build/views/src/",
+"start:prod": "node ./build/index.js",
+"lint": "npx eslint src/",
+"lint:fix": "npx eslint --fix src/",
+"format": "npx prettier --write src/",
+"db:start": "npx json-server --watch ./data/db.json --port 5555"
+},
+"keywords": [],
+"author": "Rafael Castilho Carvaho",
+"license": "ISC",
+"dependencies": {
+"axios": "^1.7.7",
+"dotenv": "^16.4.5",
+"envalid": "^8.0.0",
+"express": "^4.21.0",
+"express-handlebars": "^8.0.1",
+"json-server": "^1.0.0-beta.3",
+"lorem-ipsum": "^2.0.8",
+"node-sass-middleware": "^1.1.0",
+"sass": "^1.79.3"
+},
+"devDependencies": {
+"@eslint/js": "^9.11.0",
+"@types/express": "^4.17.21",
+"@types/express-handlebars": "^5.3.1",
+"@types/morgan": "^1.9.9",
+"@types/node": "^22.5.5",
+"@types/node-sass-middleware": "^0.0.35",
+"eslint": "^9.11.0",
+"globals": "^15.9.0",
+"nodemon": "^3.1.7",
+"prettier": "^3.3.3",
+"ts-node": "^10.9.2",
+"typescript": "^5.6.2",
+"typescript-eslint": "^8.6.0"
+}
 }

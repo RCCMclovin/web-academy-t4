@@ -1,39 +1,21 @@
 <h3>Editar Produto</h3>
 <div class='col-6'>
-  <form action='/produtos/update/{{produto.id}}' method='post'>
-    <div class='mb-3'>
-      <label for='nomeProduct' class='form-label'>Nome do Produto</label>
-      <input
-        type='text'
-        class='form-control'
-        id='nomeProduct'
-        name='nome'
-        value='{{produto.nome}}'
-      />
-    </div>
-    <div class='mb-3'>
-      <label for='precoProduct' class='form-label'>Preço do Produto</label>
-      <input
-        type='number'
-        class='form-control'
-        id='precoProduct'
-        name='preco'
-        value='{{produto.preco}}'
-      />
-    </div>
-    <div class='mb-3'>
-      <label for='estoqueProduct' class='form-label'>Estoque do Produto</label>
-      <input
-        type='number'
-        class='form-control'
-        id='estoqueProduct'
-        name='estoque'
-        value='{{produto.estoque}}'
-      />
-    </div>
-    <div class='mb-3'>
-      <button type='submit' class='btn btn-success'>Atualizar</button>
-    </div>
-  </form>
+<form action='/produtos/update/{{produto.id}}' method='post'>
+  <div class='mb-3'>
+    <label for='nomeProduct' class='form-label'>Nome do Produto</label>
+    <input type='text' class='form-control' id='nomeProduct' name='nome' value='{{produto.nome}}' />
+  </div>
+  <div class='mb-3'>
+    <label for='precoProduct' class='form-label'>Preço do Produto</label>
+    <input type='number' class='form-control' id='precoProduct' name='preco' value='{{produto.preco}}' />
+  </div>
+  <div class='mb-3'>
+    <label for='estoqueProduct' class='form-label'>Estoque do Produto</label>
+    <input type='number' class='form-control' id='estoqueProduct' name='estoque' value='{{produto.estoque}}' />
+  </div>
+  <div class='mb-3'>
+    <button type='submit' class='btn btn-success'>Atualizar</button>
+  </div>
+</form>
 
 </div>

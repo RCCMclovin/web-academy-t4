@@ -45,7 +45,7 @@ export default function CadastroPage() {
                   id="nome"
                   aria-describedby="nome"
                   {...register("nome", {required:true})}
-                />{errors.nome?.type === "required" && <span className="text-danger">Preencha este campo</span>}
+                />{errors.nome?.type === "required" && <span className="text-danger">Preencha este campo }
               </div>
 
               <div className="mb-3">
@@ -62,8 +62,8 @@ export default function CadastroPage() {
                     message: 'Email inválido',
                   },})}
                 />
-                {errors.email?.type === "required" && <span className="text-danger">Preencha este campo</span>}
-                {errors.email?.type === "pattern" && <span className="text-danger">{errors.email.message}</span>}              
+                {errors.email?.type === "required" && <span className="text-danger">Preencha este campo }
+                {errors.email?.type === "pattern" && <span className="text-danger">{errors.email.message} }              
                 </div>
 
               <div className="mb-3">
@@ -77,8 +77,8 @@ export default function CadastroPage() {
                   aria-describedby="confirmarEmail"
                   {...register("vEmail", {required:true, validate: (value) => checkEmail(getValues().email, value)})}
                 />
-              {errors.vEmail?.type === "required" && <span className="text-danger">Preencha este campo</span>}
-              {errors.vEmail?.type === "validate" && <span className="text-danger">{errors.vEmail.message}</span>}
+              {errors.vEmail?.type === "required" && <span className="text-danger">Preencha este campo }
+              {errors.vEmail?.type === "validate" && <span className="text-danger">{errors.vEmail.message} }
               </div>
               <div className="mb-3">
                 <label htmlFor="senha" className="form-label">
@@ -90,8 +90,8 @@ export default function CadastroPage() {
                   id="senha"
                   {...register("senha", {required: true, minLength: 6})}
                 />
-                {errors.senha?.type === "required" && <span className="text-danger">Preencha este campo</span>}
-                {errors.senha?.type === "minLength" && <span className="text-danger">Ao menos 6 caracteres.</span>}
+                {errors.senha?.type === "required" && <span className="text-danger">Preencha este campo }
+                {errors.senha?.type === "minLength" && <span className="text-danger">Ao menos 6 caracteres. }
               </div>
 
               <div className="d-grid col-12">

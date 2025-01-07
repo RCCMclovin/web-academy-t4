@@ -1,35 +1,31 @@
 <div class='d-flex justify-content-between'>
-  <h3>Listagem de produtos</h3>
-  <a class='btn btn-warning' type='button' href='/produtos/create'>+</a>
+<h3>Listagem de produtos</h3>
+<a class='btn btn-warning' type='button' href='/produtos/create'>+</a>
 </div>
 <table class='table'>
-  <thead>
-    <tr>
-      <th scope='col'>#</th>
-      <th scope='col'>Nome</th>
-      <th scope='col'>Preço</th>
-      <th scope='col'>Estoque</th>
-      <th scope='col'>Opções</th>
-    </tr>
-  </thead>
-  <tbody>
+<thead>
+  <tr>
+    <th scope='col'>#</th>
+    <th scope='col'>Nome</th>
+    <th scope='col'>Preço</th>
+    <th scope='col'>Estoque</th>
+    <th scope='col'>Opções</th>
+  </tr>
+</thead>
+<tbody>
 
-    {{#each produtos}}
-      <tr>
-        <th scope='row'>{{id}}</th>
-        <td>{{nome}}</td>
-        <td>{{preco}}</td>
-        <td>{{estoque}}</td>
-        <td>
-          <a href='/produtos/{{id}}'><i class='bi bi-eye'></i></a>
-          <a href='/produtos/update/{{id}}'><i
-              class='bi bi-pencil-square'
-            ></i></a>
-          <a href='/produtos/delete/{{id}}'><i
-              class='bi bi-trash3-fill'
-            ></i></a>
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
+{{#each produtos}}
+<tr>
+  <th scope='row'>{{id}}</th>
+  <td>{{nome}}</td>
+  <td>{{preco}}</td>
+  <td>{{estoque}}</td>
+  <td>
+    <a href='/produtos/{{id}}'><i class='bi bi-eye'></i></a>
+    <a href='/produtos/update/{{id}}'><i class='bi bi-pencil-square'></i></a>
+    <a href='/produtos/delete/{{id}}'><i class='bi bi-trash3-fill'></i></a>
+  </td>
+</tr>
+{{/each}}
+</tbody>
 </table>
